@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "email": "edilsonpacheco6@gmail.com",
+      "password": "$2a$10$YgXmlVcEdupyELnFwkINxeg7aovlEeVmfSTFZ4Hl/MBqkOztTmKrm",
+      "fullName": "Edilson Pacheco",
+      "address": {
+        "street": "Rua Salvatina de Abreu, 20",
+        "neighborhood": "Villa São Francisco",
+        "number": "20",
+        "city": "Itapevi",
+        "state": "SP",
+        "zipcode": "",
+        "postalCode": "06653-365"
+      },
+      "id": 1
+    }
+  ]
+}

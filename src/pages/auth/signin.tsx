@@ -19,13 +19,13 @@ type SignInForm = z.infer<typeof signInForm>;
 export default function Signin() {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignInForm>()
 
-  // const { mutateAsync: authenticate } = useMutation({
-  //   mutationFn: signIn,
-  // })
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  })
 
   function handleSignIn({ email, password }: SignInForm) {
     try {
-      console.log({ email, password })
+      authenticate({ email, password })
     } catch (error) {
       console.log(error)
     }
