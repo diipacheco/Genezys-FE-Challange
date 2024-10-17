@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 
 import '../styles/globals.css';
+import { AuthProvider, ProtectRoute } from '@/context/auth';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(
@@ -27,7 +28,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+        <AuthProvider>
+          <ProtectRoute>
+            <Component {...pageProps} />
+          </ProtectRoute>
+        </AuthProvider>
       </QueryClientProvider>
     </>
   )

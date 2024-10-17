@@ -1,4 +1,6 @@
+import { Button } from "@/components/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/table";
+import { useAuth } from "@/context/auth";
 import { api } from "@/lib/axios";
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
@@ -26,10 +28,12 @@ export const getServerSideProps = (async () => {
   return { props: { users: data } }
 }) satisfies GetServerSideProps<{ users: User[] }>
 
-export default function Home({ users }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Dashboard({ users }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const { logout } = useAuth()
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center gap-6">
       <h1 className="text-xl">Genezys Autenticação | <strong>Tabela de Usuários</strong></h1>
+      <Button onClick={logout} size="sm" variant="default" >Logout</Button>
 
       <div className="w-full max-w-5xl">
         <Table>

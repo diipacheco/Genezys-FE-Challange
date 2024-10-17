@@ -5,8 +5,8 @@ import { Input } from "@/components/form/input";
 import { Label } from "@/components/form/label";
 import { Button } from "@/components/button";
 import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import { signIn } from "@/services/signin";
+import { useAuth } from "@/context/auth";
+import Link from "next/link";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const signInForm = z.object({
@@ -18,14 +18,11 @@ type SignInForm = z.infer<typeof signInForm>;
 
 export default function Signin() {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignInForm>()
-
-  const { mutateAsync: authenticate } = useMutation({
-    mutationFn: signIn,
-  })
+  const { login } = useAuth()
 
   function handleSignIn({ email, password }: SignInForm) {
     try {
-      authenticate({ email, password })
+      login({ email, password })
     } catch (error) {
       console.log(error)
     }
@@ -39,6 +36,8 @@ export default function Signin() {
 
       <div className="w-screen h-screen flex flex-col justify-center items-center gap-6">
         <h1 className="text-xl"><strong>Genezys Autenticação</strong> | Login</h1>
+        <Link href='/signup' className="font-medium text-blue-600 cursor-pointer dark:text-blue-500 hover:underline">Cadastrar Nova Conta</Link>
+
         <div className="w-full max-w-xs">
           <form
             onSubmit={handleSubmit(handleSignIn)}

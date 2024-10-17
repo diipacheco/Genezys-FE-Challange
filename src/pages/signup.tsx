@@ -7,6 +7,7 @@ import { Button } from "@/components/button";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { signUp } from "@/services/signup";
+import Link from "next/link";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const signUpForm = z.object({
@@ -52,6 +53,9 @@ export default function SignUp() {
 
       <div className="w-screen h-screen flex flex-col justify-center items-center gap-6">
         <h1 className="text-xl"><strong>Genezys Autenticação</strong> | Cadastro</h1>
+
+        <Link href='/signin' className="font-medium text-blue-600 cursor-pointer dark:text-blue-500 hover:underline">Login</Link>
+
         <div className="w-full max-w-md">
           <form
             onSubmit={handleSubmit(handleSignUp)}
