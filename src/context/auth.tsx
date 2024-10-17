@@ -93,7 +93,7 @@ interface ProtectRouteProps {
 
 export function ProtectRoute({ children }: ProtectRouteProps) {
   const { isAuthenticated, loading } = useAuth();
-  if (loading || (!isAuthenticated && window.location.pathname !== '/login')) {
+  if (loading || (!isAuthenticated && window.location.pathname !== '/signin')) {
     return <h1>Carregando</h1>;
   }
   return children;
